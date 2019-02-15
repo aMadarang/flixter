@@ -21,7 +21,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     //variables
     var movies = [[String:Any]]() //array of dictionaries
     
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,14 +90,29 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        //find the selected movie
+        let cell = sender as! UITableViewCell //cast
+        let indexPath = tableView.indexPath(for: cell)! //gets the table view for the array 
+        let movie = movies[indexPath.row] //access array
+        
+        //pass the seleceted moe to the details view controller
+        let detailsViewController =
+            segue.destination as!
+            MovieDetailsViewController
+        detailsViewController.movie = movie
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        
+       print("hello print" )
     }
-    */
-
 }
